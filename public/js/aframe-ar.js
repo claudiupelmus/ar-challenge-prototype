@@ -9070,7 +9070,7 @@ AFRAME.registerComponent('gps-entity-place', {
         elements.forEach(function(el) {
             var distance = formatDistance(context._positionXDebug);
             if (context.el.getAttribute('value') == el.getAttribute('value')) {
-                el.innerHTML = el.getAttribute('value') + ': ' + distance + 'far';
+                el.innerHTML = el.getAttribute('value') + ': ' + distance + ' far';
             }
         });
     },
