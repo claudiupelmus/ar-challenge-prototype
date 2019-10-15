@@ -23,6 +23,7 @@ div.debug {
     font-size: 0.75em;
     padding: 0.5em;
     width: initial;
+    max-width: 150px;
 }
 
 #alert-popup {
