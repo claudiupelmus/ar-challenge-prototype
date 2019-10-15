@@ -5,19 +5,14 @@
 		<link rel="stylesheet" href="./css/app.css">
 		<script src="./js/aframe.min.js"></script>
 		<script src="./js/aframe-ar.js"></script>
-		<script src="./js/places.js"></script>
 		<script>
 			// THREEx.ArToolkitContext.baseURL = "https://raw.githack.com/jeromeetienne/ar.js/master/three.js/";
 			THREEx.ArToolkitContext.baseURL = "./external/three.js/";
 		</script>
 	</head>
-	<body style="margin: 0; overflow: hidden;">
-		<!-- <h1 id="main">Welcome to the AR challenge prototype homepage!</h1> -->
-		<!-- <p>Current project status:</p> -->
-		<!-- <img src="https://app.codeship.com/projects/ea061280-d0d5-0137-a000-72040fe6bbd2/status?branch=master" alt="Codeship status" /> -->
-
-		<!-- <h2>Video output:</h2> -->
-		<!-- <video autoplay></video> -->
+	<body">
+		<script src="./js/places.js"></script>
+		<img id="ProjectStatus" src="https://app.codeship.com/projects/ea061280-d0d5-0137-a000-72040fe6bbd2/status?branch=master" alt="Codeship status" />
 
 		<button id="enableIosAPI" style="z-index: 999; position: relative; display: none;">Enable iOS APIs</button>
 
@@ -25,12 +20,13 @@
 			cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 0;"
 			raycaster="objects: [gps-entity-place];"
 			vr-mode-ui="enabled: false"
+			gps-camera-debug
 			embedded
-			arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 512; displayHeight: 384; debugUIEnabled: false;">
+			arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
 
-			<a-camera gps-camera="minDistance: 20;" rotation-reader></a-camera>
+			<a-camera gps-camera="minDistance: 50; alert: true; positionMinAccuracy: 500;" rotation-reader></a-camera>
 		</a-scene>
 
-		<script src="./js/app.js" defer></script>
+		<!-- <script src="./js/app.js" defer></script> -->
 	</body>
 </html>
