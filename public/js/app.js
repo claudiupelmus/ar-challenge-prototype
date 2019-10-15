@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", event => {
-	getStream();
+document.addEventListener('DOMContentLoaded', event => {
+	// playStream();
 });
 
-const getStream = async () => {
+const playStream = async () => {
 	const videoContainer = document.querySelector('video');
 	const constraints = {
 		video: {
@@ -17,17 +17,16 @@ const getStream = async () => {
 				max: 600,
 			},
 			facingMode: {
-				exact: "environment"
+				exact: 'environment'
 			}
 		}
 	};
 
 	try {
-		if ("mediaDevices" in navigator && "getUserMedia" in navigator.mediaDevices) {
+		if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
 			const videoStream = await navigator.mediaDevices.getUserMedia(constraints);
 
 			videoContainer.srcObject = videoStream;
-
 			videoContainer.play();
 		}
 	}
