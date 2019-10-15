@@ -2,30 +2,34 @@
 <html>
 	<head>
 		<title>AR Challenge Prototype</title>
-		<link rel="stylesheet" href="./css/app.css">
-		<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-		<script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.js"></script>
+		<link rel='stylesheet' href='./css/app.css'>
+		<script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
+		<script src='https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.js'></script>
 		<script>
 			THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
 		</script>
-		<script src="./places.js"></script>
 	</head>
-	<body style="margin: 0; overflow: hidden;">
-		<h1 id="main">Welcome to the AR challenge prototype homepage!</h1>
-		<p>Current project status:</p>
-		<img src="https://app.codeship.com/projects/ea061280-d0d5-0137-a000-72040fe6bbd2/status?branch=master" alt="Codeship status" />
-		<script src="./js/app.js" defer></script>
+	<body style='margin: 0; overflow: hidden;'>
+		<!-- <h1 id='main'>Welcome to the AR challenge prototype homepage!</h1> -->
+		<!-- <p>Current project status:</p> -->
+		<!-- <img src='https://app.codeship.com/projects/ea061280-d0d5-0137-a000-72040fe6bbd2/status?branch=master' alt='Codeship status' /> -->
 
 		<!-- <h2>Video output:</h2> -->
 		<!-- <video autoplay></video> -->
+
+		<button id="enableIosAPI">Enable iOS APIs</button>
+
 		<a-scene
 			cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
-			raycaster="objects: [gps-entity-place];"
-			vr-mode-ui="enabled: false"
+			raycaster='objects: [gps-entity-place];'
+			vr-mode-ui='enabled: false'
 			embedded
-			arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+			arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 512; displayHeight: 384; debugUIEnabled: false;'>
 
-			<a-camera gps-camera="minDistance: 20;" rotation-reader></a-camera>
+			<a-camera gps-camera='minDistance: 20;' rotation-reader></a-camera>
 		</a-scene>
+
+		<script src='./places.js'></script>
+		<script src='./js/app.js' defer></script>
 	</body>
 </html>
