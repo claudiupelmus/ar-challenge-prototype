@@ -1,4 +1,4 @@
-const loadPlaces = function(coords) {
+const loadPlaces = function() {
 	const PLACES = [
 		{
 			name: "Locatie 1",
@@ -32,7 +32,7 @@ window.onload = () => {
 
 	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent .requestPermission === "function") {
 		// iOS 13+
-		document.getElementById("enableIosAPI").style.display = "block";
+		document.getElementById("enableIosAPI").disabled = "false";
 
 		button.addEventListener("click", (ev) => {
 			grantAccessToIosAPI();
@@ -41,9 +41,7 @@ window.onload = () => {
 
 	// first get current user location
 	return navigator.geolocation.getCurrentPosition(function (position) {
-
-		// then use it to load from remote APIs some places nearby
-		loadPlaces(position.coords)
+		loadPlaces()
 			.then((places) => {
 				places.forEach((place) => {
 					const latitude = place.location.lat;
@@ -53,6 +51,7 @@ window.onload = () => {
 					const icon = document.createElement("a-image");
 					icon.setAttribute("gps-entity-place", `latitude: ${latitude}; longitude: ${longitude}`);
 					icon.setAttribute("name", place.name);
+					icon.setAttribute("value", place.name);
 					icon.setAttribute("src", "../assets/map-marker.png");
 
 					// for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
@@ -86,13 +85,12 @@ window.onload = () => {
 					
 					scene.appendChild(icon);
 				});
-			})
+			});
 	},
 	(err) => console.error("Error in retrieving position", err),
 	{
 		enableHighAccuracy: true,
 		maximumAge: 0,
 		timeout: 27000,
-	}
-	);
+	});
 };

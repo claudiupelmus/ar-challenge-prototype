@@ -9009,7 +9009,7 @@ AFRAME.registerComponent('gps-entity-place', {
         this._positionXDebug = 0;
 
         this.debugUIAddedHandler = function () {
-            this.setDebugData(this.el);
+            this.setDebugData(this);
             window.removeEventListener('debug-ui-added', this.debugUIAddedHandler.bind(this));
         };
 
@@ -9065,11 +9065,11 @@ AFRAME.registerComponent('gps-entity-place', {
      * Set places distances from user on debug UI
      * @returns {void}
      */
-    setDebugData: function (element) {
+    setDebugData: function (context) {
         var elements = document.querySelectorAll('.debug-distance');
         elements.forEach(function(el) {
-            var distance = formatDistance(this._positionXDebug);
-            if (element.getAttribute('value') == el.getAttribute('value')) {
+            var distance = formatDistance(context._positionXDebug);
+            if (context.el.getAttribute('value') == el.getAttribute('value')) {
                 el.innerHTML = el.getAttribute('value') + ': ' + distance + 'far';
             }
         });
