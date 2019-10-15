@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", event => {
-	getStream();
+	// playStream();
 });
 
-const getStream = async () => {
+const playStream = async () => {
 	const videoContainer = document.querySelector('video');
 	const constraints = {
 		video: {
@@ -27,7 +27,6 @@ const getStream = async () => {
 			const videoStream = await navigator.mediaDevices.getUserMedia(constraints);
 
 			videoContainer.srcObject = videoStream;
-
 			videoContainer.play();
 		}
 	}
