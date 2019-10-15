@@ -1,3 +1,7 @@
 #main {
 	color: #333;
 }
+
+video {
+	width: 100%;
+}
