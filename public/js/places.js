@@ -6,16 +6,16 @@ const loadPlaces = function(coords) {
 		{
 			name: 'Floraria Ionela',
 			location: {
-				lat: 45.6481894, // add here latitude if using static data
-				lng: 25.6195097, // add here longitude if using static data
+				lat: 45.616358, // add here latitude if using static data
+				lng: 25.652741, // add here longitude if using static data
 
 			}
 		},
 	];
 
-	if (method === 'api') {
-		return loadPlaceFromAPIs(coords);
-	}
+	// if (method === 'api') {
+	// 	return loadPlaceFromAPIs(coords);
+	// }
 
 	return Promise.resolve(PLACES);
 };
@@ -53,20 +53,22 @@ function loadPlaceFromAPIs(position) {
 };
 
 const grantAccessToIosAPI = () => {
-	if (typeof DeviceMotionEvent.requestPermission === 'function' && typeof DeviceOrientationEvent .requestPermission === 'function') {
-		// iOS 13+
-		DeviceMotionEvent.requestPermission();
-		DeviceOrientationEvent.requestPermission();
-	}
+	DeviceMotionEvent.requestPermission();
+	DeviceOrientationEvent.requestPermission();
 };
 
 window.onload = () => {
 	const scene = document.querySelector('a-scene');
 	const button = document.getElementById('enableIosAPI');
 
-	button.addEventListener('click', (ev) => {
-		grantAccessToIosAPI();
-	});
+	if (typeof DeviceMotionEvent.requestPermission === 'function' && typeof DeviceOrientationEvent .requestPermission === 'function') {
+		// iOS 13+
+		document.getElementById('enableIosAPI').style.display = 'block';
+
+		button.addEventListener('click', (ev) => {
+			grantAccessToIosAPI();
+		});
+	}
 
 	// first get current user location
 	return navigator.geolocation.getCurrentPosition(function (position) {
