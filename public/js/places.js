@@ -1,19 +1,27 @@
 const loadPlaces = function(coords) {
-	// COMMENT FOLLOWING LINE IF YOU WANT TO USE STATIC DATA AND ADD COORDINATES IN THE FOLLOWING 'PLACES' ARRAY
-	// const method = 'api';
+	// COMMENT FOLLOWING LINE IF YOU WANT TO USE STATIC DATA AND ADD COORDINATES IN THE FOLLOWING "PLACES" ARRAY
+	// const method = "api";
 
 	const PLACES = [
 		{
-			name: 'Floraria Ionela',
+			name: "Biserica Sf. Treime",
 			location: {
-				lat: 45.616358, // add here latitude if using static data
-				lng: 25.652741, // add here longitude if using static data
+				lat: 45.616718, latitude if using static data
+				lng: 25.653238, // add here longitude if using static data
+
+			}
+		},
+		{
+			name: "Hanul Domnesc",
+			location: {
+				lat: 45.618702, latitude if using static data
+				lng: 25.656514, // add here longitude if using static data
 
 			}
 		},
 	];
 
-	// if (method === 'api') {
+	// if (method === "api") {
 	// 	return loadPlaceFromAPIs(coords);
 	// }
 
@@ -24,13 +32,13 @@ const loadPlaces = function(coords) {
 function loadPlaceFromAPIs(position) {
 	const params = {
 		radius: 300,    // search places not farther than this value (in meters)
-		clientId: 'HZIJGI4COHQ4AI45QXKCDFJWFJ1SFHYDFCCWKPIJDWHLVQVZ',
-		clientSecret: '',
-		version: '20300101',    // foursquare versioning, required but unuseful for this demo
+		clientId: "HZIJGI4COHQ4AI45QXKCDFJWFJ1SFHYDFCCWKPIJDWHLVQVZ",
+		clientSecret: "",
+		version: "20300101",    // foursquare versioning, required but unuseful for this demo
 	};
 
 	// CORS Proxy to avoid CORS problems
-	const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+	const corsProxy = "https://cors-anywhere.herokuapp.com/";
 
 	// Foursquare API
 	const endpoint = `${corsProxy}https://api.foursquare.com/v2/venues/search?intent=checkin
@@ -48,7 +56,7 @@ function loadPlaceFromAPIs(position) {
 				})
 		})
 		.catch((err) => {
-			console.error('Error with places API', err);
+			console.error("Error with places API", err);
 		})
 };
 
@@ -58,14 +66,14 @@ const grantAccessToIosAPI = () => {
 };
 
 window.onload = () => {
-	const scene = document.querySelector('a-scene');
-	const button = document.getElementById('enableIosAPI');
+	const scene = document.querySelector("a-scene");
+	const button = document.getElementById("enableIosAPI");
 
-	if (typeof DeviceMotionEvent.requestPermission === 'function' && typeof DeviceOrientationEvent .requestPermission === 'function') {
+	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent .requestPermission === "function") {
 		// iOS 13+
-		document.getElementById('enableIosAPI').style.display = 'block';
+		document.getElementById("enableIosAPI").style.display = "block";
 
-		button.addEventListener('click', (ev) => {
+		button.addEventListener("click", (ev) => {
 			grantAccessToIosAPI();
 		});
 	}
@@ -81,28 +89,28 @@ window.onload = () => {
 					const longitude = place.location.lng;
 
 					// add place icon
-					const icon = document.createElement('a-image');
-					icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
-					icon.setAttribute('name', place.name);
-					icon.setAttribute('src', '../assets/map-marker.png');
+					const icon = document.createElement("a-image");
+					icon.setAttribute("gps-entity-place", `latitude: ${latitude}; longitude: ${longitude}`);
+					icon.setAttribute("name", place.name);
+					icon.setAttribute("src", "../assets/map-marker.png");
 
 					// for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-					icon.setAttribute('scale', '20, 20');
+					icon.setAttribute("scale", "20, 20");
 
-					icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+					icon.addEventListener("loaded", () => window.dispatchEvent(new CustomEvent("gps-entity-place-loaded")));
 
 					const clickListener = function(ev) {
 						ev.stopPropagation();
 						ev.preventDefault();
 
-						const name = ev.target.getAttribute('name');
+						const name = ev.target.getAttribute("name");
 
 						const el = ev.detail.intersection && ev.detail.intersection.object.el;
 
 						if (el && el === ev.target) {
-							const label = document.createElement('span');
-							const container = document.createElement('div');
-							container.setAttribute('id', 'place-label');
+							const label = document.createElement("span");
+							const container = document.createElement("div");
+							container.setAttribute("id", "place-label");
 							label.innerText = name;
 							container.appendChild(label);
 							document.body.appendChild(container);
@@ -113,13 +121,13 @@ window.onload = () => {
 						}
 					};
 
-					icon.addEventListener('click', clickListener);
+					icon.addEventListener("click", clickListener);
 					
 					scene.appendChild(icon);
 				});
 			})
 	},
-		(err) => console.error('Error in retrieving position', err),
+		(err) => console.error("Error in retrieving position", err),
 		{
 			enableHighAccuracy: true,
 			maximumAge: 0,
