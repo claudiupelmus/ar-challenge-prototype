@@ -6,7 +6,7 @@ const loadPlaces = function(coords) {
 		{
 			name: "Biserica Sf. Treime",
 			location: {
-				lat: 45.616718, latitude if using static data
+				lat: 45.616718, // latitude if using static data
 				lng: 25.653238, // add here longitude if using static data
 
 			}
@@ -14,7 +14,7 @@ const loadPlaces = function(coords) {
 		{
 			name: "Hanul Domnesc",
 			location: {
-				lat: 45.618702, latitude if using static data
+				lat: 45.618702, // latitude if using static data
 				lng: 25.656514, // add here longitude if using static data
 
 			}
