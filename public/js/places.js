@@ -32,7 +32,7 @@ window.onload = () => {
 
 	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent .requestPermission === "function") {
 		// iOS 13+
-		document.getElementById("enableIosAPI").disabled = "false";
+		button.style.display = "block";
 
 		button.addEventListener("click", (ev) => {
 			grantAccessToIosAPI();
