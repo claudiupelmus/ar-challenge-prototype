@@ -22,6 +22,11 @@ const loadPlaces = function() {
 window.onload = () => {
 	const scene = document.querySelector("a-scene");
 
+	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent .requestPermission === "function") {
+		DeviceMotionEvent.requestPermission();
+		DeviceOrientationEvent.requestPermission();
+	}
+
 	// first get current user location
 	return navigator.geolocation.getCurrentPosition(function (position) {
 		loadPlaces()
