@@ -19,23 +19,8 @@ const loadPlaces = function() {
 	return Promise.resolve(PLACES);
 };
 
-const grantAccessToIosAPI = () => {
-	DeviceMotionEvent.requestPermission();
-	DeviceOrientationEvent.requestPermission();
-};
-
 window.onload = () => {
 	const scene = document.querySelector("a-scene");
-	const button = document.getElementById("enableIosAPI");
-
-	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent .requestPermission === "function") {
-		// iOS 13+
-		button.style.display = "block";
-
-		button.addEventListener("click", (ev) => {
-			grantAccessToIosAPI();
-		});
-	}
 
 	// first get current user location
 	return navigator.geolocation.getCurrentPosition(function (position) {
