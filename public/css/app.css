@@ -5,10 +5,8 @@ body {
 
 #enableIosAPI {
 	z-index: 999;
-	position: absolute;
+	position: relative;
 	display: none;
-	top: 60px;
-	right: 20px;
 }
 
 #ProjectStatus {

@@ -20,6 +20,8 @@ const loadPlaces = function() {
 };
 
 const grantAccessToIosAPI = () => {
+	DeviceMotionEvent.requestPermission();
+	DeviceOrientationEvent.requestPermission();
 };
 
 window.onload = () => {
@@ -28,8 +30,11 @@ window.onload = () => {
 
 	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent .requestPermission === "function") {
 		// iOS 13+
-		DeviceMotionEvent.requestPermission();
-		DeviceOrientationEvent.requestPermission();
+		button.style.display = "block";
+
+		button.addEventListener("click", (ev) => {
+			grantAccessToIosAPI();
+		});
 	}
 
 	// first get current user location
