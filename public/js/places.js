@@ -4,16 +4,14 @@ const loadPlaces = function() {
 			name: "Locatie 1",
 			location: {
 				lat: 45.617313, // latitude if using static data
-				lng: 25.651346, // add here longitude if using static data
-
+				lng: 25.651346 // add here longitude if using static data
 			}
 		},
 		{
 			name: "Locatie 2",
 			location: {
 				lat: 45.617898, // latitude if using static data
-				lng: 25.652204, // add here longitude if using static data
-
+				lng: 25.652204 // add here longitude if using static data
 			}
 		},
 	];
@@ -22,8 +20,6 @@ const loadPlaces = function() {
 };
 
 const grantAccessToIosAPI = () => {
-	DeviceMotionEvent.requestPermission();
-	DeviceOrientationEvent.requestPermission();
 };
 
 window.onload = () => {
@@ -32,11 +28,8 @@ window.onload = () => {
 
 	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent .requestPermission === "function") {
 		// iOS 13+
-		button.style.display = "block";
-
-		button.addEventListener("click", (ev) => {
-			grantAccessToIosAPI();
-		});
+		DeviceMotionEvent.requestPermission();
+		DeviceOrientationEvent.requestPermission();
 	}
 
 	// first get current user location
