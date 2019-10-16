@@ -21,27 +21,27 @@ const geolocationOptions = {
 	timeout: 27000,
 };
 
-function enableMotionSensors() {
-	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent.requestPermission === "function") {
-		alert("Button pushed");
+// function enableMotionSensors() {
+// 	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent.requestPermission === "function") {
+// 		alert("Button pushed");
 
-		DeviceMotionEvent.requestPermission()
-		.then((permissionState) => {
-			if (permissionState === 'granted') {
-				window.addEventListener('devicemotion', () => {});
-			}
-		})
-        .catch((err) => console.error(`An error occured: ${err}`));
+// 		DeviceMotionEvent.requestPermission()
+// 		.then((permissionState) => {
+// 			if (permissionState === 'granted') {
+// 				window.addEventListener('devicemotion', () => {});
+// 			}
+// 		})
+//         .catch((err) => console.error(`An error occured: ${err}`));
 
-		DeviceOrientationEvent.requestPermission()
-		.then((permissionState) => {
-			if (permissionState === 'granted') {
-				window.addEventListener('deviceorientation', () => {});
-			}
-		})
-        .catch((err) => console.error(`An error occured: ${err}`));
-	}
-}
+// 		DeviceOrientationEvent.requestPermission()
+// 		.then((permissionState) => {
+// 			if (permissionState === 'granted') {
+// 				window.addEventListener('deviceorientation', () => {});
+// 			}
+// 		})
+//         .catch((err) => console.error(`An error occured: ${err}`));
+// 	}
+// }
 
 const setLocations = () => {
 	const scene = document.querySelector("a-scene");
