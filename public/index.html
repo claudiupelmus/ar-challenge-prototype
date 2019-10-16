@@ -9,9 +9,12 @@
 			THREEx.ArToolkitContext.baseURL = "./external/three.js/";
 		</script>
 	</head>
-	<body">
+	<body style="margin: 0; overflow: hidden;">
 		<script src="./js/places.js"></script>
+
 		<img id="ProjectStatus" src="https://app.codeship.com/projects/ea061280-d0d5-0137-a000-72040fe6bbd2/status?branch=master" alt="Codeship status" />
+
+		<button id="enableIosAPI" onclick="enableMotionSensors()">Enable iOS APIs</button>
 
 		<a-scene
 			cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 0;"
