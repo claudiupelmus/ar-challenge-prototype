@@ -21,8 +21,10 @@ const geolocationOptions = {
 	timeout: 27000,
 };
 
-const enableMotionSensors = () => {
+function enableMotionSensors() {
 	if (typeof DeviceMotionEvent.requestPermission === "function" && typeof DeviceOrientationEvent.requestPermission === "function") {
+		alert("Button pushed");
+
 		DeviceMotionEvent.requestPermission()
 		.then((permissionState) => {
 			if (permissionState === 'granted') {
